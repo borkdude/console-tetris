@@ -89,7 +89,9 @@ com.oracle.svm.driver.NativeImage$NativeImageError: Image build request failed w
 	at com.oracle.svm.driver.NativeImage.main(NativeImage.java:1228)
 ```
 
-## README from fork
+Created an [issue](https://github.com/oracle/graal/issues/2898) about it.
+
+## README from original
 
 A command line implementation of Tetris, written in Clojure.
 
