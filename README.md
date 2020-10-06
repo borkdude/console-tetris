@@ -11,6 +11,9 @@ Then run `script/compile`.
 
 This will produce a binary called `tetris`.
 
+The change that was necessary to make this work: change terminal to `:text`
+instead of `:swing` since Swing is not supported by GraalVM `native-image`.
+
 ## README from original
 
 A command line implementation of Tetris, written in Clojure.
