@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
 
-#lein with-profiles +native-image "do" clean, uberjar
-
 export JAVA_HOME=$GRAALVM_HOME
 export PATH=$GRAALVM_HOME/bin:$PATH
+lein with-profiles +native-image "do" clean, uberjar
 
 gu install native-image
 
@@ -12,7 +11,7 @@ args=( "-jar" "target/tetris-0.1.0-SNAPSHOT-standalone.jar"
        "-H:+ReportExceptionStackTraces"
        "-J-Dclojure.spec.skip-macros=true"
        "-J-Dclojure.compiler.direct-linking=true"
-       "--initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder,sun.awt.dnd.SunDropTargetContextPeer\$EventDispatcher"
+       "--initialize-at-run-time=java.lang.Math\$RandomNumberGeneratorHolder"
        "--initialize-at-build-time"
        "-H:Log=registerResource:"
        "-H:EnableURLProtocols=http,https,jar"

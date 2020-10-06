@@ -9,7 +9,7 @@
   (:import com.googlecode.lanterna.screen.Screen))
 
 ;; The window that will hold our game.
-(def WINDOW (t/get-terminal :swing {:rows 26 :cols 19 :font-size 20}))
+(def WINDOW (t/get-terminal :text {:rows 26 :cols 19 :font-size 20}))
 (def DISPLAY (new Screen WINDOW))
 (def REDRAW-PAUSE 20)
 
@@ -121,12 +121,12 @@
 (defn center-gui!
   "Contract: nil -> nil"
   []
-  (-> WINDOW (.getJFrame) (.setLocationRelativeTo nil)))
+  #_(-> WINDOW (.getJFrame) (.setLocationRelativeTo nil)))
 
 (defn set-title!
   "Contract: string -> nil"
   [title]
-  (-> WINDOW (.getJFrame) (.setTitle title)))
+  #_(-> WINDOW (.getJFrame) (.setTitle title)))
 
 (defn show-title-screen!
   "Contract: nil -> char"
