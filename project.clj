@@ -8,4 +8,6 @@
 
                  [clojure-lanterna "0.9.7"]] ;; Advanced console library for Clojure.
   :main tetris.core
-  :aot :all)
+  :aot :all
+  :profiles {:native-image {:dependencies [[org.clojure/clojure "1.10.2-alpha2"]
+                                           [borkdude/clj-reflector-graal-java11-fix "0.0.1-graalvm-20.2.0"]]}})
