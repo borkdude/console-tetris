@@ -5,8 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.clojure/clojure "1.8.0"]
-
-                 [clojure-lanterna "0.9.7"]] ;; Advanced console library for Clojure.
+                 [babashka/clojure-lanterna "0.9.8-SNAPSHOT"]] ;; Advanced console library for Clojure.
   :main tetris.core
   :aot :all
   :profiles {:native-image {:dependencies [[org.clojure/clojure "1.10.2-alpha2"]

@@ -14,6 +14,8 @@ This will produce a binary called `tetris`.
 The change that was necessary to make this work: change terminal to `:text`
 instead of `:swing` since Swing is not supported by GraalVM `native-image`.
 
+
+
 ## README from original
 
 A command line implementation of Tetris, written in Clojure.
@@ -26,7 +28,7 @@ Uses clojure-lanterna for rendering.
 
 
     $ lein run
-    
+
 # Running in system shell
 
 By default the program is set to run in a swing based console (for portability).

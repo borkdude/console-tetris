@@ -1,15 +1,21 @@
 ;; This module renders the game. Our GUI is a command line interface with colors.
 (ns tetris.gui
-  (:require [babashka.pods :as pods]
+  (:require #?(:bb [babashka.pods :as pods])
             [tetris.collision :as c]
             [tetris.graphics :as g]
             [tetris.matrix :as m]
             [tetris.move :as mv]))
 
-(pods/load-pod "./pod-babashka-lanterna" {:socket true})
-;; (pods/load-pod ["lein" "trampoline" "run" "-m" "pod.babashka.lanterna"] {:socket true})
-(require '[pod.babashka.lanterna.terminal :as t])
-(require '[pod.babashka.lanterna.screen :as console])
+#?(:bb
+   ;; (pods/load-pod ["lein" "trampoline" "run" "-m" "pod.babashka.lanterna"] {:socket true})
+   (pods/load-pod "./pod-babashka-lanterna" {:socket true}))
+
+#?(:bb  (require '[pod.babashka.lanterna.terminal :as t])
+   :clj (require '[lanterna.terminal :as t]))
+
+#?(:bb
+        (require '[pod.babashka.lanterna.screen :as console])
+   :clj (require '[lanterna.screen :as console]))
 
 ;; The window that will hold our game.
 (def WINDOW (t/get-terminal :text {:rows 26 :cols 19 :font-size 20}))
