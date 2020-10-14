@@ -1,11 +1,10 @@
 ;; The main/core module handles the game loop.
 (ns tetris.core
-  (:require [clojure.string :as s]
+  (:require [tetris.gui :as gui]
             [tetris.matrix :as m]
-            [tetris.rotation :as r]
             [tetris.move :as mv]
-            [tetris.score :as score]
-            [tetris.gui :as gui])
+            [tetris.rotation :as r]
+            [tetris.score :as score])
   (:gen-class))
 
 ;; -------------------------------------------------------------------------------------------
@@ -42,7 +41,7 @@
 (defn clear-playfield!
   "Contract: nil -> nil"
   []
-  (swap! MATRIX (fn [m] (m/get-empty-matrix))))
+  (swap! MATRIX (fn [_] (m/get-empty-matrix))))
 
 (defn choose-new-piece!
   "Contract: nil -> string"
@@ -109,7 +108,7 @@
   (when (>
          (- (System/currentTimeMillis) @LAST-MOVE-TIME)
          (get-game-speed))
-    (swap! LAST-MOVE-TIME (fn [x] (System/currentTimeMillis)))
+    (swap! LAST-MOVE-TIME (fn [_] (System/currentTimeMillis)))
     (mv/move-down! MATRIX ACTIVE-PIECE)))
 
 ;; -------------------------------------------------------------------------------------------
@@ -158,11 +157,14 @@
     (recur)))
 
 (defn -main []
-  (println "Done!") ;; Signal that we have loaded the program.
-  (gui/start-gui)
-  ;; Center the main window before showing the title screen.
-  (gui/center-gui!)
-  (gui/set-title! "TETRIS")
-  (gui/show-title-screen!)
-  (clear-playfield!)
-  (game-loop))
+  (try
+    (println "Done!") ;; Signal that we have loaded the program.
+    (gui/start-gui)
+    ;; Center the main window before showing the title screen.
+    (gui/center-gui!)
+    (gui/set-title! "TETRIS")
+    (gui/show-title-screen!)
+    (clear-playfield!)
+    (game-loop)
+    (catch Exception e
+      (pr-str e))))
