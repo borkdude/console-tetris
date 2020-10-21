@@ -5,9 +5,8 @@
             [tetris.graphics :as g]
             [tetris.matrix :as m]
             [tetris.move :as mv]))
-
+;; (pods/load-pod ["lein" "trampoline" "run" "-m" "pod.babashka.lanterna"] {:transport :socket})
 #?(:bb
-   ;; (pods/load-pod ["lein" "trampoline" "run" "-m" "pod.babashka.lanterna"] {:socket true})
    (pods/load-pod "./pod-babashka-lanterna" {:transport :socket}))
 
 #?(:bb  (require '[pod.babashka.lanterna.terminal :as t])
