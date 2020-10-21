@@ -8,7 +8,7 @@
 
 #?(:bb
    ;; (pods/load-pod ["lein" "trampoline" "run" "-m" "pod.babashka.lanterna"] {:socket true})
-   (pods/load-pod "./pod-babashka-lanterna" {:socket true}))
+   (pods/load-pod "./pod-babashka-lanterna" {:transport :socket}))
 
 #?(:bb  (require '[pod.babashka.lanterna.terminal :as t])
    :clj (require '[lanterna.terminal :as t]))
