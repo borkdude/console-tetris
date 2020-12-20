@@ -8,5 +8,5 @@
                  [babashka/clojure-lanterna "0.9.8-SNAPSHOT"]] ;; Advanced console library for Clojure.
   :main tetris.core
   :aot :all
-  :profiles {:native-image {:dependencies [[org.clojure/clojure "1.10.2-alpha2"]
-                                           [borkdude/clj-reflector-graal-java11-fix "0.0.1-graalvm-20.2.0"]]}})
+  :profiles {:native-image {:dependencies [[org.clojure/clojure "1.10.2-rc1"]
+                                           [borkdude/clj-reflector-graal-java11-fix "0.0.1-graalvm-20.3.0"]]}})
